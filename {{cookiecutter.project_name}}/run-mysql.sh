@@ -25,7 +25,7 @@ docker run --name="$MYSQL_CONTAINER_NAME" --env="MYSQL_ROOT_PASSWORD=root" -p {{
 
 #wait for mysql server to come up
 echo "Waiting for MySQL container to come up..."
-while [ $(docker inspect --format "{{json .State.Health.Status }}" "$MYSQL_CONTAINER_NAME") != "\"healthy\"" ];
+while [ $(docker inspect --format "{{ '{{' }}json .State.Health.Status {{ '}}' }}" "$MYSQL_CONTAINER_NAME") != "\"healthy\"" ];
   do printf "."
   sleep 1
 done
